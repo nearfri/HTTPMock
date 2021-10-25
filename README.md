@@ -47,10 +47,10 @@ stub(when: .isHost("server.com"), then: .fileURL(responseFileURL))
 
 // stub 시 다양한 설정 가능. ex) 2초 딜레이 후 1KB씩 전송
 stub(when: .isHost("server.com") && .hasLastPathComponent("items.json"),
-then: HTTPResponseAssetBuilder
-.fileURL(responseFileURL)
-.settingResponseDelay(2.0)
-.settingPreferredBytesPerSecond(1_000))
+     then: HTTPResponseAssetBuilder
+        .fileURL(responseFileURL)
+        .settingResponseDelay(2.0)
+        .settingPreferredBytesPerSecond(1_000))
 
 ```
 

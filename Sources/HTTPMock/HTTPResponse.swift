@@ -2,7 +2,7 @@ import Foundation
 
 // `curl <url> -i --http1.1 -o <file_name>`으로 저장한 파일 데이터를 로딩한다.
 // `--http1.1` 옵션없이 저장하면 start line이 `HTTP/2`로 시작하는 경우가 있는데
-// CFHTTPMessage는 `HTTP/2.0`은 파싱할 수 있어도 `HTTP/2`는 파싱할 수 없으므로 `--http1.1` 옵션을 추가해줘야 한다.
+// CFHTTPMessage는 `HTTP/2`를 파싱할 수 없으므로 `--http1.1` 옵션을 추가해줘야 한다.
 public struct HTTPResponse {
     public var statusCode: Int = 500
     public var headerFields: [String: String] = [:]

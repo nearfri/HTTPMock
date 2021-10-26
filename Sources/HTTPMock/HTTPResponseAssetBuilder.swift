@@ -13,14 +13,13 @@ public extension HTTPResponseAssetBuilder {
         return HTTPResponseAssetBuilder(asset: HTTPResponseAsset(error: error))
     }
     
-    static func data(_ data: Data, contentType: HTTPMediaType) -> HTTPResponseAssetBuilder {
-        return self.data(data)
-            .settingHeaderField(name: HTTPHeaderName.contentType, value: contentType.rawValue)
-    }
-    
-    // 위의 메소드에서 contentType을 Optional로 하면 코딩 시 자동완성이 안되기 때문에 아래와 같은 별도의 메소드가 필요함
-    static func data(_ data: Data) -> HTTPResponseAssetBuilder {
-        return HTTPResponseAssetBuilder(asset: HTTPResponseAsset(data: data))
+    static func data(_ data: Data, contentType: HTTPMediaType? = nil) -> HTTPResponseAssetBuilder {
+        let builder = HTTPResponseAssetBuilder(asset: HTTPResponseAsset(data: data))
+        guard let contentType = contentType else {
+            return builder
+        }
+        return builder.settingHeaderField(name: HTTPHeaderName.contentType,
+                                          value: contentType.rawValue)
     }
     
     static func fileURL(_ fileURL: URL) -> HTTPResponseAssetBuilder {

@@ -49,14 +49,11 @@ class URLProtocolStubTests: XCTestCase {
         stub(when: .isHost("server.com"), then: .fileURL(imageURL))
         
         let url = URL(string: "https://nononosite.com/images/apple-devices.jpg")!
-        stub(
-            when: .isHost("nononosite.com"),
-            then: HTTPResponseAssetBuilder
-                .data(Data())
+        stub(when: .isHost("nononosite.com"),
+             then: .data(Data())
                 .settingStatusCode(301)
                 .settingHeaderField(name: HTTPHeaderName.location,
-                                    value: redirectURL.absoluteString)
-        )
+                                    value: redirectURL.absoluteString))
         
         // When
         let downloadedData = try? downloadData(url, using: session)
@@ -70,8 +67,7 @@ class URLProtocolStubTests: XCTestCase {
         let data = Data(count: 100)
         let url = URL(string: "https://server.com/images/apple-devices.jpg")!
         stub(when: .isHost("server.com"),
-             then: HTTPResponseAssetBuilder
-                .data(data)
+             then: .data(data)
                 .settingResponseDelay(0.1))
         
         // When
@@ -88,8 +84,7 @@ class URLProtocolStubTests: XCTestCase {
         // Given
         let url = URL(string: "https://server.com/images/apple-devices.jpg")!
         stub(when: .isHost("server.com"),
-             then: HTTPResponseAssetBuilder
-                .fileURL(imageURL)
+             then: .fileURL(imageURL)
                 .settingPreferredBytesPerSecond(1_300_000 * 2))
         
         // When
@@ -172,8 +167,7 @@ class URLProtocolStubTests: XCTestCase {
         // Given
         let url = URL(string: "https://server.com/images/apple-devices.jpg")!
         stub(when: .isHost("server.com"),
-             then: HTTPResponseAssetBuilder
-                .fileURL(imageURL)
+             then: .fileURL(imageURL)
                 .settingPreferredBytesPerSecond(5_000_000))
         
         let task = session.downloadTask(with: url) { (url, response, err) in

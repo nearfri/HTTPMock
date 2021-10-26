@@ -227,4 +227,34 @@ class HTTPRequestPredicateTests: XCTestCase {
         // Then
         XCTAssertFalse(op.evaluate(request))
     }
+    
+    func test_containsQueryItems_noParamsAndParams_false() {
+        // Given
+        url = URL(string: "https://apple.com/root/dir/file.txt")
+        request = URLRequest(url: url)
+        
+        let queryItems: [URLQueryItem] = [
+            URLQueryItem(name: "q1", value: "v1")
+        ]
+        
+        // When
+        let op = HTTPRequestPredicate.containsQueryItems(queryItems)
+        
+        // Then
+        XCTAssertFalse(op.evaluate(request))
+    }
+    
+    func test_containsQueryItems_noParamsAndNoParams_true() {
+        // Given
+        url = URL(string: "https://apple.com/root/dir/file.txt")
+        request = URLRequest(url: url)
+        
+        let queryItems: [URLQueryItem] = []
+        
+        // When
+        let op = HTTPRequestPredicate.containsQueryItems(queryItems)
+        
+        // Then
+        XCTAssert(op.evaluate(request))
+    }
 }

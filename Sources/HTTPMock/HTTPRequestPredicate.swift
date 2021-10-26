@@ -130,9 +130,8 @@ public extension HTTPRequestPredicate {
         return matchesURL(
             description: "queryItems contains \(queryItems)",
             evaluate: { (url) in
-                guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
-                    let queries = components.queryItems
-                    else { return false }
+                let components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+                let queries = components?.queryItems ?? []
                 return queryItems.allSatisfy({ queries.contains($0) })
         })
     }

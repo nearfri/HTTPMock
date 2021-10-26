@@ -47,8 +47,7 @@ stub(when: .isHost("server.com"), then: .fileURL(responseFileURL))
 
 // stub 시 다양한 설정 가능. ex) 2초 딜레이 후 1KB씩 전송
 stub(when: .isHost("server.com") && .hasLastPathComponent("items.json"),
-     then: HTTPResponseAssetBuilder
-        .fileURL(responseFileURL)
+     then: .fileURL(responseFileURL)
         .settingResponseDelay(2.0)
         .settingPreferredBytesPerSecond(1_000))
 
@@ -60,7 +59,7 @@ stub(when: .isHost("server.com") && .hasLastPathComponent("items.json"),
 
 #### Swift Package Manager
 ```
-.package(url: "https://github.com/nearfri/HTTPMock", from: "1.0.0")
+.package(url: "https://github.com/nearfri/HTTPMock", from: "0.9.0")
 ```
 
 ## 제한사항

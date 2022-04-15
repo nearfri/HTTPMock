@@ -13,7 +13,7 @@ jobs:
       PACKAGE_NAME: HTTPMock
       COVERAGE_FILE: ./coverage_report.lcov
     
-    runs-on: macos-12
+    runs-on: macOS-latest
     
     steps:
       - name: Checkout

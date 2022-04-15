@@ -2,6 +2,7 @@
 [![Swift](https://github.com/nearfri/HTTPMock/actions/workflows/swift.yml/badge.svg)](https://github.com/nearfri/HTTPMock/actions/workflows/swift.yml)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fnearfri%2FHTTPMock%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/nearfri/HTTPMock)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fnearfri%2FHTTPMock%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/nearfri/HTTPMock)
+[![codecov](https://codecov.io/gh/nearfri/HTTPMock/branch/main/graph/badge.svg?token=LAQBRRRYMZ)](https://codecov.io/gh/nearfri/HTTPMock)
 
 `HTTPMock`은 HTTP 호출 시 가짜 데이터를 다운로드받을 수 있도록 해주는 라이브러리입니다.
 네트워크 호출이 필요한 앱을 서버 없이 유닛 테스트할 때 유용하게 쓸 수 있습니다.
